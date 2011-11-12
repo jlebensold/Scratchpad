@@ -3,8 +3,10 @@ describe("Note", function() {
   beforeEach(function() {
     note = new Note();  
   });
-  it("Should Create New Notes", function() {
-    console.log(note); 
+  it("should have title / description and completed", function() {
+    expect(note.get('title')).toEqual("New Note");
+    expect(note.get('description')).toEqual("");
+    expect(note.get('completed')).toEqual(false);
   });
 });
 
