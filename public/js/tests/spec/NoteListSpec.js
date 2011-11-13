@@ -15,6 +15,7 @@ describe("NoteList", function() {
     
     notelist.first().save();
     expect(spy).toHaveBeenCalled();
+    jQuery.ajax.restore();
 
   });
 });

@@ -10,20 +10,25 @@ function json($obj)
 $app = new Slim();
 $app->config(array('templates.path' => '../templates'));
 
-$app->get('/names/:id',function($id) {
+$app->get('/notes/:id',function($id) {
 });
-$app->get('/names',function() {
+$app->get('/notes',function() {
 });
-$app->post('/names',function() use ($app) {
+$app->post('/notes',function() use ($app) {
   echo '{status: "success" }';
 }); 
-$app->put('/names/:id',function($id) use ($app) {
+$app->put('/notes/:id',function($id) use ($app) {
 });
-$app->delete('/names/:id', function($id) use ($app) {
+$app->delete('/notes/:id', function($id) use ($app) {
 });
 
 $app->get('/', function() use($app) {
   $app->render('home.tpl.php');
+});
+
+$app->get('/specs', function() use($app) {
+
+  $app->render('specs.tpl.php');
 });
 
 
