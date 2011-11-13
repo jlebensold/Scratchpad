@@ -1,14 +1,17 @@
 <?php
 require '../Slim/Slim.php';
-
+require '../ScratchPad/ViewHelpers.php';
 function json($obj)
 {
   header('Content-Type', 'application/json');
   return json_encode($obj);
 }
+$APP_CONFIG = array('templates.path' => '../templates');
+\ScratchPad\ViewHelpers::setTemplatePath($APP_CONFIG['templates.path']);
+
 
 $app = new Slim();
-$app->config(array('templates.path' => '../templates'));
+$app->config($APP_CONFIG);
 
 $app->get('/notes/:id',function($id) {
 });
