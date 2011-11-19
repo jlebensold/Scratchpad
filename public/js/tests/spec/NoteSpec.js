@@ -26,9 +26,7 @@ describe("Note", function() {
     expect(note.get('drawn')).toBeTruthy();
   });
   it("should be persisted", function(){ 
-    
     var spy = sinon.spy(jQuery, 'ajax');
-
     note.set({scratches: sampleScratches , id: 123 });
     note.save();
     this.server.respond(); 

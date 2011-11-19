@@ -8,6 +8,9 @@ describe("NoteListView", function() {
   afterEach(function() {
     this.server.restore();
   });
+
+
+
   it("should have Hello World", function() {
     noteviewlist.render();
     expect($(noteviewlist.el).text().trim()).toEqual("Hello World");
