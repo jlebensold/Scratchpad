@@ -20,9 +20,11 @@
   <script type="text/javascript" src="/js/collections/NoteList.js"></script>
   
   <?= \ScratchPad\ViewHelpers::BackboneView("NoteListView"); ?>
+  <?= \ScratchPad\ViewHelpers::BackboneView("NoteView"); ?>
   <?= \ScratchPad\ViewHelpers::BackboneView("AppView"); ?>
   <!-- include spec files here... -->
   <script type="text/javascript" src="js/tests/spec/NoteSpec.js"></script>
+  <script type="text/javascript" src="js/tests/spec/NoteViewSpec.js"></script>
   <script type="text/javascript" src="js/tests/spec/NoteListSpec.js"></script>
   <script type="text/javascript" src="js/tests/spec/NoteListViewSpec.js"></script>
   <script type="text/javascript" src="js/tests/spec/AppViewSpec.js"></script>
