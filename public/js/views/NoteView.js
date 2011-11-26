@@ -10,7 +10,6 @@ window.NoteView = Backbone.View.extend({
     _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp');
     this.render();
     this.model.draw(this.options.canvas);
-    bar = this.model;
   },
   render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
@@ -20,8 +19,7 @@ window.NoteView = Backbone.View.extend({
   },
   getCanvas: function() {
     if (this.options.canvas == undefined)
-      this.options.canvas = $("<canvas ></canvas");
-    
+      this.options.canvas = $("<canvas></canvas");
     return this.options.canvas;
   },
   markerDown : function(e) {
@@ -44,10 +42,7 @@ window.NoteView = Backbone.View.extend({
   markerUp : function(e) {
     this.drawing = false;
     this.model.draw(this.options.canvas);
-    foo = this.model.get('scratches');
   }
 
 
 });
-var foo;
-var bar;

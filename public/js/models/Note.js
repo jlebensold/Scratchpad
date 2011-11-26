@@ -16,8 +16,11 @@ window.Note = Backbone.Model.extend({
   },
   draw: function(selector)
   {
+    var w = $(selector).width();
+    var h = $(selector).height();
+    var c = $(selector).get(0).getContext('2d'); 
+    c.clearRect(0,0,w,h);
     _.each(this.get('scratches'),function(s){
-      var c = $(selector).get(0).getContext('2d');
       c.beginPath();
       c.moveTo(s.x1,s.y1);
       c.lineTo(s.x2,s.y2);
