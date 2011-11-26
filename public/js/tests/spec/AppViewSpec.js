@@ -15,5 +15,12 @@ describe("AppView", function() {
     expect(app.collection.length).toEqual(1);
     expect($(app.el).find('.scratches li').length).toEqual(1);
   });
+  it("should draw selected scratch",function() {
+    spy = sinon.spy(app, "renderSelected");
+    expect(app.renderSelected).not.toHaveBeenCalled();
+    $(app.el).find(".addscratch").trigger('click');
+    app.collection.first().set({selected: true});
+    expect(app.renderSelected).toHaveBeenCalledOnce();
+  });
 });
 

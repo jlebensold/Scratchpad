@@ -4,7 +4,7 @@ window.AppView = Backbone.View.extend({
     'click button.addscratch' : "newscratch"
   },
   initialize: function() {
-    _.bindAll(this,'render', 'newscratch');
+    _.bindAll(this,'render', 'newscratch','renderSelected');
     this.collection = new NoteList();
     this.collection.bind('add',this.addOne, this);
     this.collection.bind('change:selected',this.render,this);
@@ -18,6 +18,11 @@ window.AppView = Backbone.View.extend({
   newscratch : function() {
     this.collection.add({title: "Untitled" });
   },
+  renderSelected: function(note) {
+      var selectedView = new NoteView({model: note});
+      $(".canvas").html(selectedView.render().el);
+      $(".canvas").prepend("<h1>"+note.get('title')+"</h1>");
+  },
   render: function() {
     $(this.el).html(this.template(this.collection));
     var s = this.collection.filter(function(n) { return n.get('selected'); });
@@ -28,12 +33,7 @@ window.AppView = Backbone.View.extend({
     },this);
     
     // draw selected
-    if (s.length > 0)
-    {
-      var selectedView = new NoteView({model: s[0]});
-      $(".canvas").html(selectedView.render().el);
-      $(".canvas").prepend("<h1>"+s[0].get('title')+"</h1>");
-    }
+    if (s.length > 0) this.renderSelected(s[0]);
     return this;
   }
 
