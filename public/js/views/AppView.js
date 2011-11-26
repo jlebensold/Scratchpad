@@ -20,13 +20,20 @@ window.AppView = Backbone.View.extend({
     this.collection.add({title: "Untitled" });
   },
   renderSelected: function(note) {
-      var selectedView = new NoteView({model: note});
-      $(".canvas").html(selectedView.render().el);
+      this.options.selectedView = new NoteView({model: note});
+      $(".canvas").html(this.options.selectedView.render().el);
       $(".canvas").prepend("<h1>"+note.get('title')+"</h1>");
+  },
+  getSelectedView: function() {
+    return this.options.selectedView;
+  },
+  getSelected: function() {
+    var s = this.collection.filter(function(n) { return n.get('selected'); });
+    if (s.length>0) return s[0];
+    return null;
   },
   render: function() {
     $(this.el).html(this.template(this.collection));
-    var s = this.collection.filter(function(n) { return n.get('selected'); });
     
     this.collection.each(function(n) {
       var noteview= new NoteView({model:n});
@@ -34,7 +41,8 @@ window.AppView = Backbone.View.extend({
     },this);
     
     // draw selected
-    if (s.length > 0) this.renderSelected(s[0]);
+    var s = this.getSelected();
+    if (s != null) this.renderSelected(s);
     return this;
   }
 

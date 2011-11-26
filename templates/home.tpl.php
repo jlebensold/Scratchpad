@@ -1,6 +1,6 @@
 <html>
   <head>  
-    <title>Names Hello</title>
+    <title>Scratchpad</title>
       <link type="text/css" rel="stylesheet" media="screen" href="/css/bootstrap-1.4.0.min.css"></link>
   <link type="text/css" rel="stylesheet" media="screen" href="/css/app.css"></link>
   <script src="/js/lib/jquery-1.7.0.min.js"></script>
@@ -33,20 +33,20 @@
     </div>
 <script type="text/javascript">
 touchStart = function(event) {
-  $("footer").html('start');
-  v.markerDown(touchstub(event));
+  app.getSelectedView().markerDown(touchstub(event));
 }
 touchMove = function(event) {
   event.preventDefault();
-  v.markerMove(touchstub(event));
+  $("footer").html(app.getSelectedView().model.get('title'));
+  app.getSelectedView().markerMove(touchstub(event));
 }
 touchEnd = function(event) {
   event.preventDefault();
-  v.markerUp(touchstub(event));
+   app.getSelectedView().markerUp(touchstub(event));
 }
 touchstub = function(event) {
-  var x = $('canvas').position().left;
-  var y = $('canvas').position().top;
+  var x = $('.canvas canvas').position().left;
+  var y = $('.canvas canvas').position().top;
   return {offsetX: event.pageX - x, offsetY: event.pageY - y};
 }
 // once there is an "active canvas" this problem will be significantly mitigated"
