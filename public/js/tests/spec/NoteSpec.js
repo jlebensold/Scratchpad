@@ -33,5 +33,11 @@ describe("Note", function() {
     expect(spy.getCall(0).args[0].url).toEqual("/notes/123");
     jQuery.ajax.restore();
   });
-});
+  it("should allow adding scratches after the render", function() {
+    note.set({scratches: sampleScratches});
+    expect(note.get('scratches').length).toEqual(4);
+    note.addScratch(12,24,353,43);
+    expect(note.get('scratches').length).toEqual(5);
 
+  });
+});

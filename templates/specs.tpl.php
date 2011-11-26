@@ -43,7 +43,7 @@
   jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
   jasmine.getEnv().execute();
 </script>
-
+<div id="tester"></div>
 <canvas id="testbed" width="400" height="300"></canvas>
 </body>
 </html>

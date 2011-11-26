@@ -9,14 +9,18 @@ describe("NoteView", function() {
 
 
   beforeEach(function() {
+    $("#testbed").remove();
     note = new NoteView({el:  $('<ul></ul>'), model: new Note(
         {
+          title: "testing",
+          description: "foobar",
           scratches : sampleScratches
         })}); 
   });
 
-  it("should load a canvas from scratches", function() {
-     $("#testbed").parent().append(note.getCanvas());
+  it("should allow drawing on the canvas by recording scratches", function() {
+     $("#tester").html(note.render().el);
+  
   });
 });
 
