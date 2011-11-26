@@ -1,6 +1,6 @@
 <h2>
 <% if (status == 'read') { %>
-  <a href="#" class="draw <%= (drawn) ? 'active' :'' %>"><%= title %></a> <small class="edit"><a href="#">edit</a></small>
+  <a href="#" class="draw <%= (selected) ? 'active' : '' %>"><%= title %></a> <small class="edit"><a href="#">edit</a></small>
 <% } else { %>
   <input type="text" class="title" value="<%= title %>"/>
 <% } %>

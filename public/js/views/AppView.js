@@ -8,10 +8,11 @@ window.AppView = Backbone.View.extend({
     this.collection = new NoteList();
     this.collection.bind('add',this.addOne, this);
     this.collection.bind('change:selected',this.render,this);
+    this.collection.bind('change:title',this.render,this);
     this.render();
   },
   addOne : function(note) { 
-    v = new NoteView({model: note});
+    var v = new NoteView({model: note});
     $(this.el).find('.scratches').append(v.render().el);
   },
   newscratch : function() {
@@ -31,10 +32,10 @@ window.AppView = Backbone.View.extend({
     {
       var selectedView = new NoteView({model: s[0]});
       $(".canvas").html(selectedView.render().el);
+      $(".canvas").prepend("<h1>"+s[0].get('title')+"</h1>");
     }
     return this;
   }
 
 
 });
-var v;
