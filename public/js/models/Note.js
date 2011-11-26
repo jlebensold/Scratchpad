@@ -9,6 +9,7 @@ window.Note = Backbone.Model.extend({
       scratches: [],
       order: -1,
       drawn: false,
+      selected: false,
       status: 'read'
     };
   },

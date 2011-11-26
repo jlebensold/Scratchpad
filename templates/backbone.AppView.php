@@ -8,9 +8,8 @@
 
 
   <ul class="scratches">
-  
   </ul>
 </div>
 <div class="span4 scratchpad">
-  <div class="canvas"></div>
+  <div class="canvas">asdsd</div>
 </div>

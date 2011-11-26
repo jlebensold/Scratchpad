@@ -7,7 +7,7 @@
   <script src="/js/lib/underscore-1.2.1.min.js"></script>
   <script src="/js/lib/backbone-0.5.3.min.js"></script>
 
-	<meta name="viewport" content="width=768px, maximum-scale=1.0" /> 
+	<meta name="viewport" content="maximum-scale=1.0" /> 
   
 
   <!-- include source files here... -->
@@ -20,7 +20,6 @@
 
   </head>
   <body>
-<!--
     <div class="topbar">
       <div class="fill">
         <div class="container">
@@ -32,7 +31,6 @@
         </div>
       </div>
     </div>
-!-->
 <script type="text/javascript">
 touchStart = function(event) {
   $("footer").html('start');

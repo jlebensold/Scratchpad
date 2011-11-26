@@ -8,25 +8,30 @@ window.NoteView = Backbone.View.extend({
   drawing: false,
   events: {
      'mousedown canvas': 'markerDown',
-//     'touchstart .pad': 'markerDown',
      'mousemove canvas': 'markerMove',
-//     'touchmove .pad': 'markerMove',
      'mouseup canvas': 'markerUp',
-     'touchend canvas': 'markerUp',
      'click .edit': 'editNoteMeta',
-     'click .btn.save': 'saveNoteMeta'
+     'click .btn.save': 'saveNoteMeta',
+     'click a.draw' :'select'
   },
   initialize: function() {
-    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta');
+    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta','select');
     this.model.bind('change:status',this.render);
     this.render();
-    this.model.draw(this.options.canvas);
+    this.model.draw(this.getCanvas());
   },
   render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
     $(this.el).find('.pad').html(this.getCanvas());
     this.drawing = false;
     return this;
+  },
+  select: function(e) {
+    var s = this.model.collection.filter(function(n){ return n.get('selected');});
+    if (s.length > 0)
+      s[0].set({'selected':false});
+    this.model.set({selected: true});
+    e.preventDefault();
   },
   editNoteMeta: function() {
     this.model.set({status: 'edit'});
@@ -42,7 +47,6 @@ window.NoteView = Backbone.View.extend({
     if (this.options.canvas == undefined)
     {
       this.options.canvas = $('<canvas width="'+this.canvasWidth+'" height="'+this.canvasHeight+'" ></canvas');
-//      this.options.canvas.attr("width",$(".pad").width());
     }
     return this.options.canvas;
   },

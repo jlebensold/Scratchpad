@@ -2,9 +2,8 @@
 {
   background: #CFCFCF;
   border: 1px solid #555;
-  z-index: 1000;
 }
-canvas
+.scratches .pad
 {
+/*  display: none; */
 }
-
