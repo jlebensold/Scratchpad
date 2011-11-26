@@ -12,10 +12,11 @@ window.NoteView = Backbone.View.extend({
      'mouseup canvas': 'markerUp',
      'click .edit': 'editNoteMeta',
      'click .btn.save': 'saveNoteMeta',
+     'click .btn.delete': 'deleteNote',
      'click a.draw' :'select'
   },
   initialize: function() {
-    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta','select');
+    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta','select','deleteNote');
     this.model.bind('change:status',this.render);
     this.render();
     this.model.draw(this.getCanvas());
@@ -42,6 +43,11 @@ window.NoteView = Backbone.View.extend({
       description: $(this.el).find('.description').val()
     });
     this.model.set({status:'read'});
+  },
+  deleteNote: function() {
+    this.model.destroy();
+    //$(this.el).remove();
+
   },
   getCanvas: function() {
     if (this.options.canvas == undefined)
@@ -70,7 +76,6 @@ window.NoteView = Backbone.View.extend({
   markerUp : function(e) {
     this.drawing = false;
     this.model.draw(this.options.canvas);
-    //$("footer").append('bar');
   }
 
 

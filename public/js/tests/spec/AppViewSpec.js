@@ -22,5 +22,16 @@ describe("AppView", function() {
     app.collection.first().set({selected: true});
     expect(app.renderSelected).toHaveBeenCalledOnce();
   });
+  it("should re-render when a note is destroyed",function(){
+    
+    app.collection.add({title:'new'});
+    app.collection.add({title:'new'});
+    app.collection.add({title:'new'});
+    app.collection.first().set({'selected':true});
+    app.collection.first().set({'status':'edit'});
+    var spy = sinon.spy(app,'render');
+    app.collection.models[0].destroy();
+    expect($(app.el).find('.scratches li').length).toEqual(2);
+  });
 });
 

@@ -49,5 +49,11 @@ describe("NoteView", function() {
     noteView.el.find('.save').trigger('click');
     expect(noteView.model.get('description')).toEqual('testing123');
   });
+  it("should be able to delete itself and update the collection",function() {
+    var spy = sinon.spy(noteView.model,'destroy');
+    noteView.model.set({status: 'edit'});
+    noteView.el.find('.delete').trigger('click'); 
+    expect(noteView.model.destroy).toHaveBeenCalledOnce();
+  });
 });
 

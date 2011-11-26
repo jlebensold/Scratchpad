@@ -11,7 +11,7 @@
 <% } else { %>
   <textarea class="description" value="<%= description %>"/>
   <br/>
-  <button class="btn success save">save</button>
+  <button class="btn success save">save</button>&nbsp; <button class="btn delete danger">delete</button>
 <% } %>
 </p>
 <div class="pad"></div>

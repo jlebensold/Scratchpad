@@ -9,6 +9,7 @@ window.AppView = Backbone.View.extend({
     this.collection.bind('add',this.addOne, this);
     this.collection.bind('change:selected',this.render,this);
     this.collection.bind('change:title',this.render,this);
+    this.collection.bind('remove',this.render,this);
     this.render();
   },
   addOne : function(note) { 
