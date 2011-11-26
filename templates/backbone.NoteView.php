@@ -1,10 +1,12 @@
-<h2>
+
 <% if (status == 'read') { %>
-  <a href="#" class="draw <%= (selected) ? 'active' : '' %>"><%= title %></a> <small class="edit"><a href="#">edit</a></small>
+<h2>
+  <a href="#" class="draw <%= (selected) ? 'active' : '' %>"><%= title %></a>
+</h2>
+<small class="edit"><a href="#">edit</a></small>
 <% } else { %>
   <input type="text" class="title" value="<%= title %>"/>
 <% } %>
-</h2>
 <p>
 <% if (status == 'read') { %>
   <%= description %>
@@ -15,3 +17,4 @@
 <% } %>
 </p>
 <div class="pad"></div>
+<div style="clear:both"></div>

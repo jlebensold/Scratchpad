@@ -1,24 +1,96 @@
 .pad
 {
-  background: #CFCFCF;
+  background: #FFF;
   border: 1px solid #555;
 }
 .scratches .pad
 {
   display: none;
 }
-  .scratches h2 a.active
+.scratches
+{
+  list-style:none;
+  margin: 0 0;
+  padding: 0 0;
+  line-height: 1;
+}
+  .scratches li
   {
-    color: #636363;
+    margin: 0 0;
+    padding: 0 0;
+    position: relative;
   }
+  .scratches li:nth-child(even)
+  {
+    background: #EAEAEA;
+  }
+  .scratches li:nth-child(odd)
+  {
+    background: #F0F0F0;
+  }
+  .scratches li p
+  {
+    clear: left;
+    padding: 0px 5px;
+    font-size: 13px;
+    color: #000;
+  }
+  .scratches li h2
+  {
+    margin: 0 0;
+    padding: 0 0 5px 0px;
+    float: left;
+    padding-left: 5px;
+    width: 80%;
+  }
+    .scratches h2 a
+    {
+      display: block;
+      width: 100%;
+    }
+    .scratches h2 a.active
+    {
+      color: #AAA40D;
+    }
+  .scratches li .edit
+  {
+    float: right;
+    margin: 5px;
+  }
+  .scratches li.active
+  {
+    background: #FFF6D9;
+  }
+.list
+{
+  margin-right: 0px;
+}
+.scratchpad
+{
+  background: #FFF6D9;
+  margin-left:0px !important;
+}
+.scratchpad h1
+{
+  background: #FFF;
+  margin-left: 0px !important;
+  padding-left: 20px;
+}
 .canvas
 {
   list-style: none;
+  margin: 0px;
+
 }
+  .canvas .pad
+  {
+    margin: 20px;
+  }
   .canvas h2,
   .canvas p,
   .canvas input,
-  .canvas textarea
+  .canvas textarea,
+  .canvas small
   {
     display: none;
   }

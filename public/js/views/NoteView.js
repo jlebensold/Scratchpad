@@ -13,7 +13,8 @@ window.NoteView = Backbone.View.extend({
      'click .edit': 'editNoteMeta',
      'click .btn.save': 'saveNoteMeta',
      'click .btn.delete': 'deleteNote',
-     'click a.draw' :'select'
+     'click a.draw' :'select',
+     'click h2' :'select'
   },
   initialize: function() {
     _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta','select','deleteNote');
@@ -25,6 +26,8 @@ window.NoteView = Backbone.View.extend({
     $(this.el).html(this.template(this.model.toJSON()));
     $(this.el).find('.pad').html(this.getCanvas());
     this.drawing = false;
+    if (this.model.get('selected'))
+      $(this.el).addClass('active');
     return this;
   },
   select: function(e) {
