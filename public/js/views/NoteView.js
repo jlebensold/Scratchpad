@@ -7,11 +7,13 @@ window.NoteView = Backbone.View.extend({
   events: {
      'mousedown canvas': 'markerDown',
      'mousemove canvas': 'markerMove',
-     'mouseup canvas': 'markerUp'
+     'mouseup canvas': 'markerUp',
+     'click .edit': 'editNoteMeta',
+     'click .btn.save': 'saveNoteMeta'
   },
   initialize: function() {
-    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp');
-    this.model.bind('change:status',this.statusChanged);
+    _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp','editNoteMeta','saveNoteMeta');
+    this.model.bind('change:status',this.render);
     this.render();
     this.model.draw(this.options.canvas);
   },
@@ -21,9 +23,15 @@ window.NoteView = Backbone.View.extend({
     this.drawing = false;
     return this;
   },
-  statusChanged: function() { 
-    console.log('s');
-
+  editNoteMeta: function() {
+    this.model.set({status: 'edit'});
+  },
+  saveNoteMeta: function() {
+    this.model.set({
+      title: $(this.el).find('.title').val(),
+      description: $(this.el).find('.description').val()
+    });
+    this.model.set({status:'read'});
   },
   getCanvas: function() {
     if (this.options.canvas == undefined)

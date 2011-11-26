@@ -41,9 +41,13 @@ describe("NoteView", function() {
   });
   it("should have a textbox for changing the title",function(){
     noteView.model.set({status: 'edit'});
-    console.log(noteView.render().el);
-    
-    expect(1).toEqual(1);
+    expect($(noteView.render().el).find('input.title').length).toEqual(1);
+  });
+  it("should be able to save notes on button save",function() {
+    noteView.model.set({status: 'edit'});
+    noteView.el.find(".description").val("testing123");
+    noteView.el.find('.save').trigger('click');
+    expect(noteView.model.get('description')).toEqual('testing123');
   });
 });
 
