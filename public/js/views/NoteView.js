@@ -1,13 +1,18 @@
 window.NoteView = Backbone.View.extend({
   template: _.template($("#noteview-template").html()),
   tagName: 'li',
+  canvasWidth: 500,
+  canvasHeight: 400,
   startX: 0,
   startY: 0,
   drawing: false,
   events: {
      'mousedown canvas': 'markerDown',
+//     'touchstart .pad': 'markerDown',
      'mousemove canvas': 'markerMove',
+//     'touchmove .pad': 'markerMove',
      'mouseup canvas': 'markerUp',
+     'touchend canvas': 'markerUp',
      'click .edit': 'editNoteMeta',
      'click .btn.save': 'saveNoteMeta'
   },
@@ -19,7 +24,7 @@ window.NoteView = Backbone.View.extend({
   },
   render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
-    $(this.el).append(this.getCanvas());
+    $(this.el).find('.pad').html(this.getCanvas());
     this.drawing = false;
     return this;
   },
@@ -35,7 +40,10 @@ window.NoteView = Backbone.View.extend({
   },
   getCanvas: function() {
     if (this.options.canvas == undefined)
-      this.options.canvas = $("<canvas></canvas");
+    {
+      this.options.canvas = $('<canvas width="'+this.canvasWidth+'" height="'+this.canvasHeight+'" ></canvas');
+//      this.options.canvas.attr("width",$(".pad").width());
+    }
     return this.options.canvas;
   },
   markerDown : function(e) {
@@ -58,6 +66,7 @@ window.NoteView = Backbone.View.extend({
   markerUp : function(e) {
     this.drawing = false;
     this.model.draw(this.options.canvas);
+    //$("footer").append('bar');
   }
 
 
