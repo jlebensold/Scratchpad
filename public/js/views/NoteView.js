@@ -1,6 +1,9 @@
 window.NoteView = Backbone.View.extend({
   template: _.template($("#noteview-template").html()),
   tagName: 'li',
+  startX: 0,
+  startY: 0,
+  drawing: false,
   events: {
      'mousedown canvas': 'markerDown',
      'mousemove canvas': 'markerMove',
@@ -8,6 +11,7 @@ window.NoteView = Backbone.View.extend({
   },
   initialize: function() {
     _.bindAll(this,'render','getCanvas','markerDown','markerMove','markerUp');
+    this.model.bind('change:status',this.statusChanged);
     this.render();
     this.model.draw(this.options.canvas);
   },
@@ -16,6 +20,10 @@ window.NoteView = Backbone.View.extend({
     $(this.el).append(this.getCanvas());
     this.drawing = false;
     return this;
+  },
+  statusChanged: function() { 
+    console.log('s');
+
   },
   getCanvas: function() {
     if (this.options.canvas == undefined)

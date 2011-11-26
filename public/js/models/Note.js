@@ -8,7 +8,8 @@ window.Note = Backbone.Model.extend({
       completed: false,
       scratches: [],
       order: -1,
-      drawn: false
+      drawn: false,
+      status: 'read'
     };
   },
   addScratch: function(x1,y1,x2,y2) {
