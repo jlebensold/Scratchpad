@@ -25,13 +25,12 @@ window.AppView = Backbone.View.extend({
       var noteview= new NoteView({model:n});
       $(this.el).find('.scratches').append(noteview.render().el);
     },this);
+    
     // draw selected
     if (s.length > 0)
     {
       var selectedView = new NoteView({model: s[0]});
-      selectedView.el = $('.canvas');
-      selectedView.tagName = "div";
-      selectedView.initialize();
+      $(".canvas").html(selectedView.render().el);
     }
     return this;
   }

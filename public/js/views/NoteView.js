@@ -1,8 +1,8 @@
 window.NoteView = Backbone.View.extend({
   template: _.template($("#noteview-template").html()),
   tagName: 'li',
-  canvasWidth: 500,
-  canvasHeight: 400,
+  canvasWidth: 400,
+  canvasHeight: 200,
   startX: 0,
   startY: 0,
   drawing: false,

@@ -5,5 +5,16 @@
 }
 .scratches .pad
 {
-/*  display: none; */
+  display: none;
 }
+.canvas
+{
+  list-style: none;
+}
+  .canvas h2,
+  .canvas p,
+  .canvas input,
+  .canvas textarea
+  {
+    display: none;
+  }

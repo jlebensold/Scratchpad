@@ -1,4 +1,4 @@
-<div class="span10 list">
+<div class="span7 list">
   <h2 class="page-header">
     Scratches
     <small>Keep track of your scribbles</small>  
@@ -10,6 +10,6 @@
   <ul class="scratches">
   </ul>
 </div>
-<div class="span4 scratchpad">
-  <div class="canvas">asdsd</div>
+<div class="span8 scratchpad">
+  <ul class="canvas"></ul>
 </div>
