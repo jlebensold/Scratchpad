@@ -76,6 +76,11 @@
   margin-left: 0px !important;
   padding-left: 20px;
 }
+    .scratches .title
+    {
+        margin: 5px;
+        
+    }
 .canvas
 {
   list-style: none;
